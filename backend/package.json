@@ -1,5 +1,5 @@
 {
-  "name": "content-hub-backend",
+  "name": "content-deck-backend",
   "version": "1.0.0",
   "description": "Content Hub Backend API",
   "main": "server.js",
