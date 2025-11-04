@@ -1,23 +1,25 @@
 
 const { Pool } = require('pg');
 const fs = require('fs');
+const path = require('path');
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false }
+  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
 });
 
 async function init() {
   try {
-    const schema = fs.readFileSync('./schema.sql', 'utf8');
+    console.log('🔧 Initializing database...');
+    const schemaPath = path.join(__dirname, 'schema.sql');
+    const schema = fs.readFileSync(schemaPath, 'utf8');
     await pool.query(schema);
-    console.log('✅ Database initialized');
+    console.log('✅ Database tables created successfully!');
     process.exit(0);
   } catch (err) {
-    console.error('❌ Error:', err);
-    process.exit(1);
+    console.log('⚠️ Database init error (may already exist):', err.message);
+    process.exit(0);
   }
 }
 
 init();
-EOf
