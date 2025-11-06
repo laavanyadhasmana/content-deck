@@ -796,9 +796,11 @@ setShowAuthModal(true);
                             {movie.isPublic ? <Eye className="w-4 h-4 text-green-400" /> : <EyeOff className="w-4 h-4 text-slate-500" />}
                           </button>
                           <button onClick={() => openModal('movie', movie)} 
-                            className={`p-2 ${darkMode ? 'bg-slate-900/50 hover:bg-slate-700/50' : 'bg-white hover:bg-slate-50'} rounded-lg transition-all`}>
-                            <Edit2 className="w-4 h-4 text-pink-400" />
-                          </button>
+  className={`p-2 ${darkMode ? 'bg-slate-900/50 hover:bg-slate-700/50' : 'bg-white hover:bg-slate-50'} rounded-lg transition-all`}>
+  <Edit2 className="w-4 h-4 text-pink-400" />
+</button>
+                          
+                          
                           <button onClick={() => deleteItem('movie', movie.id)} 
                             className={`p-2 ${darkMode ? 'bg-slate-900/50 hover:bg-slate-700/50' : 'bg-white hover:bg-slate-50'} rounded-lg transition-all`}>
                             <Trash2 className="w-4 h-4 text-red-400" />
