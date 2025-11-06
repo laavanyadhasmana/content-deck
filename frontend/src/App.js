@@ -269,7 +269,7 @@ if (result.token) {
   setShowAuthModal(false);
         playSound('success');
         setShowConfetti(true);
-        showToast(`Welcome ${authMode === 'login' ? 'back' : 'to Content Hub'}, ${result.user.name}!`, 'success');
+        showToast(`Welcome ${authMode === 'login' ? 'back' : 'to ContentDeck'}, ${result.user.name}!`, 'success');
         await loadContent();
       }
     } catch (err) {
@@ -470,7 +470,7 @@ setShowAuthModal(true);
                     <Film className="w-6 h-6 text-white" />
                   </div>
                   <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
-                    Content Hub
+                    ContentDeck
                   </h1>
                 </div>
                 <div className="flex items-center gap-4">
