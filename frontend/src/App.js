@@ -359,10 +359,28 @@ setShowAuthModal(true);
     playSound('click');
     try {
       const endpoint = type === 'blog' ? '/blogs' : type === 'movie' ? '/movies' : '/tvshows';
+      
+      // Create the update data object
+      const updateData = type === 'blog' 
+        ? { 
+            title: item.title,
+            content: item.content,
+            tags: item.tags || [],
+            is_public: !item.isPublic 
+          }
+        : { 
+            title: item.title,
+            year: item.year,
+            rating: item.rating,
+            notes: item.notes || '',
+            is_public: !item.isPublic 
+          };
+      
       await api.call(`${endpoint}/${id}`, { 
         method: 'PUT', 
-        body: JSON.stringify({ ...item, is_public: !item.isPublic }) 
+        body: JSON.stringify(updateData) 
       });
+      
       await loadContent();
       showToast(`Made ${!item.isPublic ? 'public' : 'private'}`, 'success');
     } catch (err) {
