@@ -250,6 +250,7 @@ login(userData, localStorage.getItem('token'));
       setBlogs(blogsData.map(b => ({ ...b, isPublic: b.is_public, createdAt: b.created_at })));
       setMovies(moviesData.map(m => ({ ...m, isPublic: m.is_public })));
       setTvShows(tvData.map(t => ({ ...t, isPublic: t.is_public })));
+
     } catch (err) {
       showToast('Failed to load content', 'error');
     }
@@ -796,9 +797,9 @@ setShowAuthModal(true);
                             {movie.isPublic ? <Eye className="w-4 h-4 text-green-400" /> : <EyeOff className="w-4 h-4 text-slate-500" />}
                           </button>
                           <button onClick={() => openModal('movie', movie)} 
-  className={`p-2 ${darkMode ? 'bg-slate-900/50 hover:bg-slate-700/50' : 'bg-white hover:bg-slate-50'} rounded-lg transition-all`}>
-  <Edit2 className="w-4 h-4 text-pink-400" />
-</button>
+                            className={`p-2 ${darkMode ? 'bg-slate-900/50 hover:bg-slate-700/50' : 'bg-white hover:bg-slate-50'} rounded-lg transition-all`}>
+                            <Edit2 className="w-4 h-4 text-pink-400" />
+                          </button>
                           
                           
                           <button onClick={() => deleteItem('movie', movie.id)} 
