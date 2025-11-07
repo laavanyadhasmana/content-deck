@@ -298,7 +298,7 @@ setShowAuthModal(true);
     if (item) {
       setFormData({
         title: item.title || '', content: item.content || '', year: item.year || '',
-        rating: item.rating || 5, notes: item.notes || '', tags: item.tags?.join(', ') || '', isPublic: item.isPublic
+        rating: item.rating || 5, notes: item.notes || '', tags: item.tags?.join(', ') || '', isPublic: item.isPublic?true:false
       });
     } else {
       setFormData({ title: '', content: '', year: '', rating: 5, notes: '', tags: '', isPublic: true });
