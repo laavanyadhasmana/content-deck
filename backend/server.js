@@ -45,6 +45,7 @@ app.use(helmet());
 app.use(cors({ origin: ['http://localhost:3000', 'https://content-deck-woad.vercel.app'], credentials: true }));
 app.use(express.json({ limit: '10mb' }));
 app.use(morgan('dev'));
+app.set('trust proxy', 1);
 
 // Rate limiters
 const authLimiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 5 });
