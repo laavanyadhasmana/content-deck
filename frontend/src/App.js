@@ -873,142 +873,149 @@ return (
     </div>
   </div>
 )}
-            {activeTab === 'tv' && (
-              <div className="animate-fadeIn">
-                <div className="flex justify-between items-center mb-8">
-                  <h2 className="text-3xl font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
-                    My TV Shows
-                  </h2>
-                  <button onClick={() => openModal('tv')} 
-                    className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-xl hover:from-green-700 hover:to-emerald-700 transition-all shadow-lg shadow-green-500/50 transform hover:scale-105 font-semibold">
-                    <Plus className="w-5 h-5" />
-                    Add TV Show
-                  </button>
-                </div>
+{activeTab === 'tv' && (
+  <div className="animate-fadeIn">
+    <div className="flex justify-between items-center mb-8">
+      <h2 className="text-3xl font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
+        My TV Shows
+      </h2>
+      <button onClick={() => openModal('tv')} 
+        className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-xl hover:from-green-700 hover:to-emerald-700 transition-all shadow-lg shadow-green-500/50 transform hover:scale-105 font-semibold">
+        <Plus className="w-5 h-5" />
+        Add TV Show
+      </button>
+    </div>
 
-                <div className={`mb-6 p-4 rounded-xl ${darkMode ? 'bg-slate-800/50' : 'bg-white/80'} backdrop-blur-xl border ${darkMode ? 'border-purple-500/20' : 'border-purple-200'}`}>
-                  <div className="flex flex-wrap gap-4">
-                    <div className="flex-1 min-w-[150px]">
-                      <label className={`block text-sm mb-2 ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>Sort By</label>
-                      <select 
-                        value={tvFilters.sortBy}
-                        onChange={(e) => setTvFilters({...tvFilters, sortBy: e.target.value})}
-                        className={`w-full px-4 py-2 ${darkMode ? 'bg-slate-900/50 border-purple-500/30 text-white' : 'bg-white border-purple-200 text-slate-900'} border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500`}>
-                        <option value="newest">Newest First</option>
-                        <option value="oldest">Oldest First</option>
-                        <option value="rating">Highest Rating</option>
-                        <option value="year">Year</option>
-                        <option value="title">Alphabetical</option>
-                      </select>
-                    </div>
-                    <div className="flex-1 min-w-[150px]">
-                      <label className={`block text-sm mb-2 ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>Min Rating</label>
-                      <select 
-                        value={tvFilters.minRating}
-                        onChange={(e) => setTvFilters({...tvFilters, minRating: parseInt(e.target.value)})}
-                        className={`w-full px-4 py-2 ${darkMode ? 'bg-slate-900/50 border-purple-500/30 text-white' : 'bg-white border-purple-200 text-slate-900'} border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500`}>
-                        <option value="1">1+ Stars</option>
-                        <option value="2">2+ Stars</option>
-                        <option value="3">3+ Stars</option>
-                        <option value="4">4+ Stars</option>
-                        <option value="5">5 Stars</option>
-                      </select>
-                    </div>
-                    <div className="flex-1 min-w-[150px]">
-                      <label className={`block text-sm mb-2 ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>Year</label>
-                      <input 
-                        type="number"
-                        placeholder="2024"
-                        value={tvFilters.year}
-                        onChange={(e) => setTvFilters({...tvFilters, year: e.target.value})}
-                        className={`w-full px-4 py-2 ${darkMode ? 'bg-slate-900/50 border-purple-500/30 text-white' : 'bg-white border-purple-200 text-slate-900'} border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 placeholder-slate-500`}
-                      />
-                    </div>
-                    <div className="flex items-end">
-                      <button 
-                        onClick={() => setTvFilters({ sortBy: 'newest', minRating: 1, year: '' })}
-                        className={`px-6 py-2 ${darkMode ? 'bg-slate-700/50 hover:bg-slate-600/50' : 'bg-slate-200 hover:bg-slate-300'} rounded-xl transition-all`}>
-                        Clear
-                      </button>
-                    </div>
-                  </div>
-                </div>
+    <div className={`mb-6 p-4 rounded-xl ${darkMode ? 'bg-slate-800/50' : 'bg-white/80'} backdrop-blur-xl border ${darkMode ? 'border-purple-500/20' : 'border-purple-200'}`}>
+      <div className="flex flex-wrap gap-4">
+        <div className="flex-1 min-w-[150px]">
+          <label className={`block text-sm mb-2 ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>Sort By</label>
+          <select 
+            value={tvFilters.sortBy}
+            onChange={(e) => setTvFilters({...tvFilters, sortBy: e.target.value})}
+            className={`w-full px-4 py-2 ${darkMode ? 'bg-slate-900/50 border-purple-500/30 text-white' : 'bg-white border-purple-200 text-slate-900'} border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500`}>
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+            <option value="rating">Highest Rating</option>
+            <option value="year">Year</option>
+            <option value="title">Alphabetical</option>
+          </select>
+        </div>
+        <div className="flex-1 min-w-[150px]">
+          <label className={`block text-sm mb-2 ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>Min Rating</label>
+          <select 
+            value={tvFilters.minRating}
+            onChange={(e) => setTvFilters({...tvFilters, minRating: parseInt(e.target.value)})}
+            className={`w-full px-4 py-2 ${darkMode ? 'bg-slate-900/50 border-purple-500/30 text-white' : 'bg-white border-purple-200 text-slate-900'} border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500`}>
+            <option value="1">1+ Stars</option>
+            <option value="2">2+ Stars</option>
+            <option value="3">3+ Stars</option>
+            <option value="4">4+ Stars</option>
+            <option value="5">5 Stars</option>
+          </select>
+        </div>
+        <div className="flex-1 min-w-[150px]">
+          <label className={`block text-sm mb-2 ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>Year</label>
+          <input 
+            type="number"
+            placeholder="2024"
+            value={tvFilters.year}
+            onChange={(e) => setTvFilters({...tvFilters, year: e.target.value})}
+            className={`w-full px-4 py-2 ${darkMode ? 'bg-slate-900/50 border-purple-500/30 text-white' : 'bg-white border-purple-200 text-slate-900'} border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 placeholder-slate-500`}
+          />
+        </div>
+        <div className="flex items-end">
+          <button 
+            onClick={() => setTvFilters({ sortBy: 'newest', minRating: 1, year: '' })}
+            className={`px-6 py-2 ${darkMode ? 'bg-slate-700/50 hover:bg-slate-600/50' : 'bg-slate-200 hover:bg-slate-300'} rounded-xl transition-all`}>
+            Clear
+          </button>
+        </div>
+      </div>
+    </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {filteredTvShows.map((show, idx) => (
-                    <div key={show.id} 
-                      className={`group relative overflow-hidden rounded-2xl ${darkMode ? 'bg-slate-800/50 border-purple-500/20 hover:border-green-500/50 hover:shadow-green-500/20' : 'bg-white/80 border-purple-200 hover:border-green-400 hover:shadow-green-300/50'} backdrop-blur-xl border p-6 transition-all duration-300 hover:scale-105 hover:shadow-2xl`}
-                      style={{ animationDelay: `${idx * 0.1}s` }}>
-                      <div className="flex justify-between items-start mb-4">
-                        <div className="flex-1">
-                          <h3 className={`text-xl font-bold mb-1 group-hover:text-green-400 transition-colors ${darkMode ? 'text-white' : 'text-slate-900'}`}>
-                            {show.title}
-                          </h3>
-                          <p className={`${darkMode ? 'text-slate-400' : 'text-slate-600'} text-sm flex items-center gap-1`}>
-                            <Calendar className="w-3 h-3" />
-                            {show.year}
-                          </p>
-                        </div>
-                        <div className="flex gap-1">
-                          <button 
-                            onClick={(e) => {
-                              e.preventDefault();
-                              e.stopPropagation();
-                              toggleVisibility('tv', show.id, show);
-                            }} 
-                            type="button"
-                            className={`p-2 ${darkMode ? 'bg-slate-900/50 hover:bg-slate-700/50' : 'bg-white hover:bg-slate-50'} rounded-lg transition-all`}>
-                            {show.isPublic ? <Eye className="w-4 h-4 text-green-400" /> : <EyeOff className="w-4 h-4 text-slate-500" />}
-                          </button>
-                          <button 
-                            onClick={(e) => {
-                              e.preventDefault();
-                              e.stopPropagation();
-                              openModal('tv', show);
-                            }} 
-                            type="button"
-                            className={`p-2 ${darkMode ? 'bg-slate-900/50 hover:bg-slate-700/50' : 'bg-white hover:bg-slate-50'} rounded-lg transition-all`}>
-                            <Edit2 className="w-4 h-4 text-green-400" />
-                          </button>
-                          <button 
-                            onClick={(e) => {
-                              e.preventDefault();
-                              e.stopPropagation();
-                              deleteItem('tv', show.id);
-                            }} 
-                            type="button"
-                            className={`p-2 ${darkMode ? 'bg-slate-900/50 hover:bg-slate-700/50' : 'bg-white hover:bg-slate-50'} rounded-lg transition-all`}>
-                            <Trash2 className="w-4 h-4 text-red-400" />
-                          </button>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-1 mb-3">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} className={`w-5 h-5 ${i < show.rating ? 'text-yellow-400 fill-yellow-400' : 'text-slate-600'} transition-all group-hover:scale-110`} 
-                            style={{ transitionDelay: `${i * 50}ms` }} />
-                        ))}
-                      </div>
-                      <p className={`${darkMode ? 'text-slate-300' : 'text-slate-700'} text-sm leading-relaxed`}>{show.notes}</p>
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-green-500 rounded-full filter blur-3xl opacity-0 group-hover:opacity-20 transition-opacity"></div>
-                    </div>
-                  ))}
-                  {filteredTvShows.length === 0 && (
-                    <div className="col-span-full text-center py-20">
-                      <Tv className="w-16 h-16 text-slate-600 mx-auto mb-4 animate-pulse" />
-                      <p className={`${darkMode ? 'text-slate-400' : 'text-slate-600'} text-lg mb-4`}>
-                        {searchQuery ? 'No TV shows found matching your search' : 'No TV shows yet. Start binging!'}
-                      </p>
-                      {!searchQuery && (
-                        <button onClick={() => openModal('tv')} 
-                          className="px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-xl hover:from-green-700 hover:to-emerald-700 transition-all shadow-lg transform hover:scale-105 font-semibold">
-                          Add Your First TV Show
-                        </button>
-                      )}
-                    </div>
-                  )}
-                </div>
-              </div>
-            )}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {filteredTvShows.map((show, idx) => (
+        <div key={show.id} 
+          className={`group relative overflow-hidden rounded-2xl ${darkMode ? 'bg-slate-800/50 border-purple-500/20 hover:border-green-500/50 hover:shadow-green-500/20' : 'bg-white/80 border-purple-200 hover:border-green-400 hover:shadow-green-300/50'} backdrop-blur-xl border p-6 transition-all duration-300 hover:shadow-2xl`}
+          style={{ animationDelay: `${idx * 0.1}s` }}>
+          
+          <div className="mb-4">
+            <h3 className={`text-xl font-bold mb-1 group-hover:text-green-400 transition-colors ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+              {show.title}
+            </h3>
+            <p className={`${darkMode ? 'text-slate-400' : 'text-slate-600'} text-sm flex items-center gap-1`}>
+              <Calendar className="w-3 h-3" />
+              {show.year}
+            </p>
+          </div>
+          
+          <div className="flex items-center gap-1 mb-3">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className={`w-5 h-5 ${i < show.rating ? 'text-yellow-400 fill-yellow-400' : 'text-slate-600'} transition-all group-hover:scale-110`} 
+                style={{ transitionDelay: `${i * 50}ms` }} />
+            ))}
+          </div>
+          
+          {show.notes && (
+            <p className={`${darkMode ? 'text-slate-300' : 'text-slate-700'} text-sm leading-relaxed mb-4`}>{show.notes}</p>
+          )}
+
+          <div className="flex gap-2 mt-4">
+            <button 
+              onClick={(e) => {
+                e.stopPropagation();
+                toggleVisibility('tv', show.id, show);
+              }}
+              type="button"
+              className={`flex-1 px-3 py-2 ${darkMode ? 'bg-slate-900/80 hover:bg-slate-700' : 'bg-white hover:bg-slate-50'} rounded-lg transition-all border ${darkMode ? 'border-purple-500/30 hover:border-green-500/50' : 'border-purple-200 hover:border-green-400'} flex items-center justify-center gap-1`}>
+              {show.isPublic ? <Eye className="w-4 h-4 text-green-400" /> : <EyeOff className="w-4 h-4 text-slate-500" />}
+              <span className="text-xs">{show.isPublic ? 'Public' : 'Private'}</span>
+            </button>
+            
+            <button 
+              onClick={(e) => {
+                e.stopPropagation();
+                openModal('tv', show);
+              }}
+              type="button"
+              className={`flex-1 px-3 py-2 ${darkMode ? 'bg-slate-900/80 hover:bg-slate-700' : 'bg-white hover:bg-slate-50'} rounded-lg transition-all border ${darkMode ? 'border-purple-500/30 hover:border-green-500/50' : 'border-purple-200 hover:border-green-400'} flex items-center justify-center gap-1`}>
+              <Edit2 className="w-4 h-4 text-green-400" />
+              <span className="text-xs">Edit</span>
+            </button>
+            
+            <button 
+              onClick={(e) => {
+                e.stopPropagation();
+                deleteItem('tv', show.id);
+              }}
+              type="button"
+              className={`flex-1 px-3 py-2 ${darkMode ? 'bg-slate-900/80 hover:bg-slate-700' : 'bg-white hover:bg-slate-50'} rounded-lg transition-all border ${darkMode ? 'border-purple-500/30 hover:border-red-500/50' : 'border-purple-200 hover:border-red-400'} flex items-center justify-center gap-1`}>
+              <Trash2 className="w-4 h-4 text-red-400" />
+              <span className="text-xs">Delete</span>
+            </button>
+          </div>
+          
+          <div className="absolute top-0 right-0 w-32 h-32 bg-green-500 rounded-full filter blur-3xl opacity-0 group-hover:opacity-20 transition-opacity"></div>
+        </div>
+      ))}
+      {filteredTvShows.length === 0 && (
+        <div className="col-span-full text-center py-20">
+          <Tv className="w-16 h-16 text-slate-600 mx-auto mb-4 animate-pulse" />
+          <p className={`${darkMode ? 'text-slate-400' : 'text-slate-600'} text-lg mb-4`}>
+            {searchQuery ? 'No TV shows found matching your search' : 'No TV shows yet. Start binging!'}
+          </p>
+          {!searchQuery && (
+            <button onClick={() => openModal('tv')} 
+              className="px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-xl hover:from-green-700 hover:to-emerald-700 transition-all shadow-lg transform hover:scale-105 font-semibold">
+              Add Your First TV Show
+            </button>
+          )}
+        </div>
+      )}
+    </div>
+  </div>
+)}
           </main>
         </>
       )}
