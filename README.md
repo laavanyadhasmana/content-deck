@@ -54,8 +54,7 @@ It features a modern, responsive interface built with **Tailwind CSS** that supp
 
 ### 1. Clone the Repository
 ```bash
-git clone [https://github.com/yourusername/content-deck.git](https://github.com/yourusername/content-deck.git)
-cd content-deck
+git clone https://github.com/yourusername/content-deck.git
 ```
 ### 2. Backend Setup
 ```bash
