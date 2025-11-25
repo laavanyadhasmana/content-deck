@@ -1,4 +1,3 @@
-// server.js - Complete Working Version
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -13,7 +12,6 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 5001;
 
-// Logger
 const logger = winston.createLogger({
   level: process.env.LOG_LEVEL || 'info',
   format: winston.format.combine(winston.format.timestamp(), winston.format.json()),
@@ -153,9 +151,6 @@ app.get('/api/v1/auth/me', authenticateToken, async (req, res) => {
   }
 });
 
-// ============================================
-// BLOG ROUTES
-// ============================================
 
 app.get('/api/v1/blogs', authenticateToken, async (req, res) => {
   try {
@@ -225,9 +220,7 @@ app.delete('/api/v1/blogs/:id', authenticateToken, async (req, res) => {
   }
 });
 
-// ============================================
-// MOVIE ROUTES
-// ============================================
+// Movie routes
 
 app.get('/api/v1/movies', authenticateToken, async (req, res) => {
   try {
@@ -297,9 +290,7 @@ app.delete('/api/v1/movies/:id', authenticateToken, async (req, res) => {
   }
 });
 
-// ============================================
-// TV SHOW ROUTES
-// ============================================
+// TV Show routes
 
 app.get('/api/v1/tvshows', authenticateToken, async (req, res) => {
   try {
@@ -369,11 +360,8 @@ app.delete('/api/v1/tvshows/:id', authenticateToken, async (req, res) => {
   }
 });
 
-// ============================================
-// PUBLIC CONTENT ROUTES (NEW!)
-// ============================================
+// Public content routes
 
-// Get public blogs by username
 app.get('/api/v1/public/:username/blogs', async (req, res) => {
   try {
     const user = await pool.query(
@@ -397,7 +385,6 @@ app.get('/api/v1/public/:username/blogs', async (req, res) => {
   }
 });
 
-// Get public movies by username
 app.get('/api/v1/public/:username/movies', async (req, res) => {
   try {
     const user = await pool.query(
@@ -421,7 +408,6 @@ app.get('/api/v1/public/:username/movies', async (req, res) => {
   }
 });
 
-// Get public TV shows by username
 app.get('/api/v1/public/:username/tvshows', async (req, res) => {
   try {
     const user = await pool.query(
@@ -445,11 +431,7 @@ app.get('/api/v1/public/:username/tvshows', async (req, res) => {
   }
 });
 
-// ============================================
-// PROFILE ROUTES (NEW!)
-// ============================================
-
-// Get public profile with stats
+//profile routes
 app.get('/api/v1/profile/:username', async (req, res) => {
   try {
     const user = await pool.query(
@@ -461,7 +443,6 @@ app.get('/api/v1/profile/:username', async (req, res) => {
       return res.status(404).json({ error: 'User not found' });
     }
     
-    // Get public content counts
     const blogCount = await pool.query(
       'SELECT COUNT(*) FROM blogs WHERE user_id = $1 AND is_public = true',
       [user.rows[0].id]
@@ -491,7 +472,6 @@ app.get('/api/v1/profile/:username', async (req, res) => {
   }
 });
 
-// Update own profile
 app.put('/api/v1/profile', authenticateToken, async (req, res) => {
   try {
     const { name, bio } = req.body;
@@ -512,11 +492,6 @@ app.put('/api/v1/profile', authenticateToken, async (req, res) => {
   }
 });
 
-// ============================================
-// ADVANCED FILTERING ROUTES (NEW!)
-// ============================================
-
-// Get blogs with filters
 app.get('/api/v1/blogs/filter', authenticateToken, async (req, res) => {
   try {
     const { sortBy, search, tag } = req.query;
@@ -524,19 +499,19 @@ app.get('/api/v1/blogs/filter', authenticateToken, async (req, res) => {
     let query = 'SELECT * FROM blogs WHERE user_id = $1';
     const params = [req.user.id];
     
-    // Add search filter
+    //search filter
     if (search) {
       query += ' AND (title ILIKE $2 OR content ILIKE $2)';
       params.push(`%${search}%`);
     }
     
-    // Add tag filter
+    //tag filter
     if (tag) {
       query += ` AND ${params.length + 1} = ANY(tags)`;
       params.push(tag);
     }
     
-    // Add sorting
+    //sorting
     switch(sortBy) {
       case 'oldest':
         query += ' ORDER BY created_at ASC';
@@ -556,7 +531,7 @@ app.get('/api/v1/blogs/filter', authenticateToken, async (req, res) => {
   }
 });
 
-// Get movies with filters
+//movies with filters
 app.get('/api/v1/movies/filter', authenticateToken, async (req, res) => {
   try {
     const { sortBy, minRating, year } = req.query;
@@ -564,19 +539,19 @@ app.get('/api/v1/movies/filter', authenticateToken, async (req, res) => {
     let query = 'SELECT * FROM movies WHERE user_id = $1';
     const params = [req.user.id];
     
-    // Add rating filter
+    //rating filter
     if (minRating) {
       query += ` AND rating >= ${params.length + 1}`;
       params.push(parseInt(minRating));
     }
     
-    // Add year filter
+    //year filter
     if (year) {
       query += ` AND year = ${params.length + 1}`;
       params.push(parseInt(year));
     }
     
-    // Add sorting
+    //sorting
     switch(sortBy) {
       case 'oldest':
         query += ' ORDER BY created_at ASC';
@@ -602,7 +577,7 @@ app.get('/api/v1/movies/filter', authenticateToken, async (req, res) => {
   }
 });
 
-// Get TV shows with filters
+//TV shows with filters
 app.get('/api/v1/tvshows/filter', authenticateToken, async (req, res) => {
   try {
     const { sortBy, minRating, year } = req.query;
@@ -610,19 +585,19 @@ app.get('/api/v1/tvshows/filter', authenticateToken, async (req, res) => {
     let query = 'SELECT * FROM tv_shows WHERE user_id = $1';
     const params = [req.user.id];
     
-    // Add rating filter
+    //rating filter
     if (minRating) {
       query += ` AND rating >= ${params.length + 1}`;
       params.push(parseInt(minRating));
     }
     
-    // Add year filter
+    //year filter
     if (year) {
       query += ` AND year = ${params.length + 1}`;
       params.push(parseInt(year));
     }
     
-    // Add sorting
+    //sorting
     switch(sortBy) {
       case 'oldest':
         query += ' ORDER BY created_at ASC';
@@ -648,10 +623,7 @@ app.get('/api/v1/tvshows/filter', authenticateToken, async (req, res) => {
   }
 });
 
-// ============================================
-// HEALTH CHECK
-// ============================================
-
+//health check
 app.get('/api/v1/health', async (req, res) => {
   try {
     await pool.query('SELECT 1');
@@ -665,10 +637,7 @@ app.get('/api/v1/health', async (req, res) => {
   }
 });
 
-// ============================================
-// BACKWARD COMPATIBILITY
-// ============================================
-
+// backward compatibility
 app.use('/api/auth/*', (req, res, next) => {
   req.url = req.url.replace('/api/auth', '/api/v1/auth');
   next();
