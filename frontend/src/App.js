@@ -401,9 +401,13 @@ return (
       <div className="fixed inset-0 bg-black bg-opacity-80 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-fadeIn">
         <div className={`${darkMode ? 'bg-gradient-to-br from-slate-800 to-slate-900' : 'bg-gradient-to-br from-white to-slate-50'} rounded-2xl shadow-2xl max-w-md w-full p-8 border ${darkMode ? 'border-purple-500/20' : 'border-purple-200'} backdrop-blur-xl transform transition-all duration-300 hover:scale-105`}>
           <div className="text-center mb-8">
-            <div className="inline-block p-4 bg-gradient-to-br from-purple-600 to-pink-600 rounded-2xl mb-4 shadow-lg shadow-purple-500/50 animate-bounce">
-              <Film className="w-8 h-8 text-white" />
-            </div>
+          <div className="inline-block mb-4">
+  <img 
+    src="/logo.png" 
+    alt="ContentDeck Logo" 
+    className="w-16 h-16 object-contain drop-shadow-[0_0_12px_rgba(168,85,247,0.8)] animate-bounce"
+  />
+</div>
             <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
               {authMode === 'login' ? 'Welcome Back' : 'Join the Hub'}
             </h2>
@@ -464,59 +468,64 @@ return (
     {isAuthenticated && currentUser && (
       <>
         <header className={`relative ${darkMode ? 'bg-slate-900/50' : 'bg-white/50'} backdrop-blur-xl border-b ${darkMode ? 'border-purple-500/20' : 'border-purple-200'} sticky top-0 z-40 shadow-lg ${darkMode ? 'shadow-purple-500/10' : 'shadow-purple-200/50'}`}>
-          <div className="max-w-7xl mx-auto px-4 py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <div className="p-2 bg-gradient-to-br from-purple-600 to-pink-600 rounded-xl shadow-lg shadow-purple-500/50 animate-pulse">
-                  <Film className="w-6 h-6 text-white" />
-                </div>
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
-                  ContentDeck
-                </h1>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="relative group">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-purple-400 w-4 h-4" />
-                  <input 
-                    ref={searchInputRef}
-                    type="text" 
-                    placeholder="Search your universe..." 
-                    value={searchInput}
-                    onChange={handleSearchChange}
-                    className={`pl-10 pr-4 py-2 ${darkMode ? 'bg-slate-800/50 border-purple-500/30' : 'bg-white border-purple-200'} border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 w-64 placeholder-slate-500 backdrop-blur-sm transition-all group-hover:border-purple-500/50`}
-                  />
-                </div>
-                
-                <div className="flex items-center gap-2">
-                  <button 
-                    onClick={() => setShowShortcuts(true)}
-                    className={`p-2 ${darkMode ? 'bg-slate-800/50 hover:bg-slate-700/50' : 'bg-white hover:bg-slate-100'} rounded-xl transition-all border ${darkMode ? 'border-purple-500/20' : 'border-purple-200'}`}
-                    title="Keyboard Shortcuts (⌘/)">
-                    <Command className="w-4 h-4 text-purple-400" />
-                  </button>
-                  <button onClick={toggleSound}
-                    className={`p-2 ${darkMode ? 'bg-slate-800/50 hover:bg-slate-700/50' : 'bg-white hover:bg-slate-100'} rounded-xl transition-all border ${darkMode ? 'border-purple-500/20' : 'border-purple-200'}`}>
-                    {soundEnabled ? <Volume2 className="w-4 h-4 text-purple-400" /> : <VolumeX className="w-4 h-4 text-slate-400" />}
-                  </button>
-                  <button onClick={toggleDarkMode}
-                    className={`p-2 ${darkMode ? 'bg-slate-800/50 hover:bg-slate-700/50' : 'bg-white hover:bg-slate-100'} rounded-xl transition-all border ${darkMode ? 'border-purple-500/20' : 'border-purple-200'}`}>
-                    {darkMode ? <Sun className="w-4 h-4 text-yellow-400" /> : <Moon className="w-4 h-4 text-purple-600" />}
-                  </button>
-                </div>
+  <div className="max-w-7xl mx-auto px-4 py-4">
+    <div className="flex items-center justify-between">
+      <div className="flex items-center gap-4">
+        <div className="relative group">
+          <img 
+            src="/logo.png" 
+            alt="ContentDeck Logo" 
+            className="w-10 h-10 object-contain drop-shadow-[0_0_8px_rgba(168,85,247,0.6)] group-hover:drop-shadow-[0_0_12px_rgba(168,85,247,0.8)] transition-all group-hover:scale-110"
+          />
+        </div>
+        <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
+          ContentDeck
+        </h1>
+      </div>
+      <div className="flex items-center gap-4">
+        <div className="relative group">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-purple-400 w-4 h-4" />
+          <input 
+            ref={searchInputRef}
+            type="text" 
+            placeholder="Search your universe..." 
+            value={searchInput}
+            onChange={handleSearchChange}
+            className={`pl-10 pr-4 py-2 ${darkMode ? 'bg-slate-800/50 border-purple-500/30' : 'bg-white border-purple-200'} border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 w-64 placeholder-slate-500 backdrop-blur-sm transition-all group-hover:border-purple-500/50`}
+          />
+        </div>
+        
+        <div className="flex items-center gap-2">
+          <button 
+            onClick={() => setShowShortcuts(true)}
+            className={`p-2 ${darkMode ? 'bg-slate-800/50 hover:bg-slate-700/50' : 'bg-white hover:bg-slate-100'} rounded-xl transition-all border ${darkMode ? 'border-purple-500/20' : 'border-purple-200'}`}
+            title="Keyboard Shortcuts (⌘/)">
+            <Command className="w-4 h-4 text-purple-400" />
+          </button>
+          <button onClick={toggleSound}
+            className={`p-2 ${darkMode ? 'bg-slate-800/50 hover:bg-slate-700/50' : 'bg-white hover:bg-slate-100'} rounded-xl transition-all border ${darkMode ? 'border-purple-500/20' : 'border-purple-200'}`}>
+            {soundEnabled ? <Volume2 className="w-4 h-4 text-purple-400" /> : <VolumeX className="w-4 h-4 text-slate-400" />}
+          </button>
+          <button onClick={toggleDarkMode}
+            className={`p-2 ${darkMode ? 'bg-slate-800/50 hover:bg-slate-700/50' : 'bg-white hover:bg-slate-100'} rounded-xl transition-all border ${darkMode ? 'border-purple-500/20' : 'border-purple-200'}`}>
+            {darkMode ? <Sun className="w-4 h-4 text-yellow-400" /> : <Moon className="w-4 h-4 text-purple-600" />}
+          </button>
+        </div>
 
-                <div className={`flex items-center gap-3 px-4 py-2 ${darkMode ? 'bg-slate-800/50' : 'bg-white'} rounded-xl border ${darkMode ? 'border-purple-500/20' : 'border-purple-200'} backdrop-blur-sm`}>
-                  <div className="w-8 h-8 bg-gradient-to-br from-purple-600 to-pink-600 rounded-lg flex items-center justify-center shadow-lg">
-                    <User className="w-4 h-4 text-white" />
-                  </div>
-                  <span className="text-sm font-medium">{currentUser.username}</span>
-                  <button onClick={handleLogout} className={`p-2 ${darkMode ? 'hover:bg-slate-700/50' : 'hover:bg-slate-100'} rounded-lg transition-all`}>
-                    <LogOut className="w-4 h-4 text-purple-400" />
-                  </button>
-                </div>
-              </div>
-            </div>
+        <div className={`flex items-center gap-3 px-4 py-2 ${darkMode ? 'bg-slate-800/50' : 'bg-white'} rounded-xl border ${darkMode ? 'border-purple-500/20' : 'border-purple-200'} backdrop-blur-sm`}>
+          <div className="w-8 h-8 bg-gradient-to-br from-purple-600 to-pink-600 rounded-lg flex items-center justify-center shadow-lg">
+            <User className="w-4 h-4 text-white" />
           </div>
-        </header>
+          <span className="text-sm font-medium">{currentUser.username}</span>
+          <button onClick={handleLogout} className={`p-2 ${darkMode ? 'hover:bg-slate-700/50' : 'hover:bg-slate-100'} rounded-lg transition-all`}>
+            <LogOut className="w-4 h-4 text-purple-400" />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
 
         <nav className={`relative ${darkMode ? 'bg-slate-900/30' : 'bg-white/30'} backdrop-blur-xl border-b ${darkMode ? 'border-purple-500/10' : 'border-purple-200'}`}>
           <div className="max-w-7xl mx-auto px-4">
@@ -1167,4 +1176,3 @@ return (
 }
 
 export default App;
-
