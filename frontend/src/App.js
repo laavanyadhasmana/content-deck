@@ -398,21 +398,21 @@ return (
     </div>
 
     {showAuthModal && (
-      <div className="fixed inset-0 bg-black bg-opacity-80 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-fadeIn">
-        <div className={`${darkMode ? 'bg-gradient-to-br from-slate-800 to-slate-900' : 'bg-gradient-to-br from-white to-slate-50'} rounded-2xl shadow-2xl max-w-md w-full p-8 border ${darkMode ? 'border-purple-500/20' : 'border-purple-200'} backdrop-blur-xl transform transition-all duration-300 hover:scale-105`}>
-          <div className="text-center mb-8">
-          <div className="inline-block mb-4">
-  <img 
-    src="/logo.png" 
-    alt="ContentDeck Logo" 
-    className="w-16 h-16 object-contain drop-shadow-[0_0_12px_rgba(168,85,247,0.8)] animate-bounce"
-  />
-</div>
-            <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-              {authMode === 'login' ? 'Welcome Back' : 'Join the Hub'}
-            </h2>
-            <p className={`${darkMode ? 'text-slate-400' : 'text-slate-600'} mt-2`}>Your cinematic journey awaits</p>
-          </div>
+  <div className="fixed inset-0 bg-black bg-opacity-80 backdrop-blur-sm flex items-center justify-center z-50 p-3 sm:p-4 animate-fadeIn">
+    <div className={`${darkMode ? 'bg-gradient-to-br from-slate-800 to-slate-900' : 'bg-gradient-to-br from-white to-slate-50'} rounded-xl sm:rounded-2xl shadow-2xl max-w-md w-full p-4 sm:p-8 border ${darkMode ? 'border-purple-500/20' : 'border-purple-200'} backdrop-blur-xl transform transition-all duration-300 hover:scale-105`}>
+      <div className="text-center mb-6 sm:mb-8">
+        <div className="inline-block mb-3 sm:mb-4">
+          <img 
+            src="/logo.png" 
+            alt="ContentDeck Logo" 
+            className="w-12 h-12 sm:w-16 sm:h-16 object-contain drop-shadow-[0_0_12px_rgba(168,85,247,0.8)] animate-bounce"
+          />
+        </div>
+        <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+          {authMode === 'login' ? 'Welcome Back' : 'Join the Hub'}
+        </h2>
+        <p className={`${darkMode ? 'text-slate-400' : 'text-slate-600'} mt-2 text-sm sm:text-base`}>Your cinematic journey awaits</p>
+      </div>
 
           {error && (
             <div className="mb-4 p-4 bg-red-500/10 border border-red-500/50 rounded-xl text-red-400 text-sm backdrop-blur-sm animate-shake">
@@ -467,43 +467,45 @@ return (
 
     {isAuthenticated && currentUser && (
       <>
-        <header className={`relative ${darkMode ? 'bg-slate-900/50' : 'bg-white/50'} backdrop-blur-xl border-b ${darkMode ? 'border-purple-500/20' : 'border-purple-200'} sticky top-0 z-40 shadow-lg ${darkMode ? 'shadow-purple-500/10' : 'shadow-purple-200/50'}`}>
-  <div className="max-w-7xl mx-auto px-4 py-4">
-    <div className="flex items-center justify-between">
-      <div className="flex items-center gap-4">
+      <header className={`relative ${darkMode ? 'bg-slate-900/50' : 'bg-white/50'} backdrop-blur-xl border-b ${darkMode ? 'border-purple-500/20' : 'border-purple-200'} sticky top-0 z-40 shadow-lg ${darkMode ? 'shadow-purple-500/10' : 'shadow-purple-200/50'}`}>
+  <div className="max-w-7xl mx-auto px-3 sm:px-4 py-3 sm:py-4">
+    <div className="flex items-center justify-between gap-2">
+      <div className="flex items-center gap-2 sm:gap-4">
         <div className="relative group">
           <img 
             src="/logo.png" 
             alt="ContentDeck Logo" 
-            className="w-10 h-10 object-contain drop-shadow-[0_0_8px_rgba(168,85,247,0.6)] group-hover:drop-shadow-[0_0_12px_rgba(168,85,247,0.8)] transition-all group-hover:scale-110"
+            className="w-8 h-8 sm:w-10 sm:h-10 object-contain drop-shadow-[0_0_8px_rgba(168,85,247,0.6)] group-hover:drop-shadow-[0_0_12px_rgba(168,85,247,0.8)] transition-all group-hover:scale-110"
           />
         </div>
-        <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
+        <h1 className="text-lg sm:text-2xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
           ContentDeck
         </h1>
       </div>
-      <div className="flex items-center gap-4">
-        <div className="relative group">
+      
+      <div className="flex items-center gap-2">
+        {/* Desktop search */}
+        <div className="hidden md:block relative group">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-purple-400 w-4 h-4" />
           <input 
             ref={searchInputRef}
             type="text" 
-            placeholder="Search your universe..." 
+            placeholder="Search..." 
             value={searchInput}
             onChange={handleSearchChange}
-            className={`pl-10 pr-4 py-2 ${darkMode ? 'bg-slate-800/50 border-purple-500/30' : 'bg-white border-purple-200'} border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 w-64 placeholder-slate-500 backdrop-blur-sm transition-all group-hover:border-purple-500/50`}
+            className={`pl-10 pr-4 py-2 ${darkMode ? 'bg-slate-800/50 border-purple-500/30' : 'bg-white border-purple-200'} border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 w-48 lg:w-64 placeholder-slate-500 backdrop-blur-sm transition-all text-sm`}
           />
         </div>
         
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 sm:gap-2">
           <button 
             onClick={() => setShowShortcuts(true)}
-            className={`p-2 ${darkMode ? 'bg-slate-800/50 hover:bg-slate-700/50' : 'bg-white hover:bg-slate-100'} rounded-xl transition-all border ${darkMode ? 'border-purple-500/20' : 'border-purple-200'}`}
+            className={`p-2 ${darkMode ? 'bg-slate-800/50 hover:bg-slate-700/50' : 'bg-white hover:bg-slate-100'} rounded-xl transition-all border ${darkMode ? 'border-purple-500/20' : 'border-purple-200'} hidden lg:block`}
             title="Keyboard Shortcuts (⌘/)">
             <Command className="w-4 h-4 text-purple-400" />
           </button>
           <button onClick={toggleSound}
-            className={`p-2 ${darkMode ? 'bg-slate-800/50 hover:bg-slate-700/50' : 'bg-white hover:bg-slate-100'} rounded-xl transition-all border ${darkMode ? 'border-purple-500/20' : 'border-purple-200'}`}>
+            className={`p-2 ${darkMode ? 'bg-slate-800/50 hover:bg-slate-700/50' : 'bg-white hover:bg-slate-100'} rounded-xl transition-all border ${darkMode ? 'border-purple-500/20' : 'border-purple-200'} hidden sm:block`}>
             {soundEnabled ? <Volume2 className="w-4 h-4 text-purple-400" /> : <VolumeX className="w-4 h-4 text-slate-400" />}
           </button>
           <button onClick={toggleDarkMode}
@@ -512,68 +514,83 @@ return (
           </button>
         </div>
 
-        <div className={`flex items-center gap-3 px-4 py-2 ${darkMode ? 'bg-slate-800/50' : 'bg-white'} rounded-xl border ${darkMode ? 'border-purple-500/20' : 'border-purple-200'} backdrop-blur-sm`}>
-          <div className="w-8 h-8 bg-gradient-to-br from-purple-600 to-pink-600 rounded-lg flex items-center justify-center shadow-lg">
-            <User className="w-4 h-4 text-white" />
+        <div className={`flex items-center gap-2 px-2 sm:px-4 py-2 ${darkMode ? 'bg-slate-800/50' : 'bg-white'} rounded-xl border ${darkMode ? 'border-purple-500/20' : 'border-purple-200'} backdrop-blur-sm`}>
+          <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-br from-purple-600 to-pink-600 rounded-lg flex items-center justify-center shadow-lg">
+            <User className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
           </div>
-          <span className="text-sm font-medium">{currentUser.username}</span>
-          <button onClick={handleLogout} className={`p-2 ${darkMode ? 'hover:bg-slate-700/50' : 'hover:bg-slate-100'} rounded-lg transition-all`}>
-            <LogOut className="w-4 h-4 text-purple-400" />
+          <span className="text-xs sm:text-sm font-medium hidden sm:inline">{currentUser.username}</span>
+          <button onClick={handleLogout} className={`p-1 sm:p-2 ${darkMode ? 'hover:bg-slate-700/50' : 'hover:bg-slate-100'} rounded-lg transition-all`}>
+            <LogOut className="w-3 h-3 sm:w-4 sm:h-4 text-purple-400" />
           </button>
         </div>
       </div>
     </div>
+
+    {/* Mobile search - below header on small screens */}
+    <div className="md:hidden mt-3 relative group">
+      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-purple-400 w-4 h-4" />
+      <input 
+        type="text" 
+        placeholder="Search your universe..." 
+        value={searchInput}
+        onChange={handleSearchChange}
+        className={`w-full pl-10 pr-4 py-2 ${darkMode ? 'bg-slate-800/50 border-purple-500/30' : 'bg-white border-purple-200'} border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 placeholder-slate-500 backdrop-blur-sm transition-all text-sm`}
+      />
+    </div>
   </div>
 </header>
 
-
-        <nav className={`relative ${darkMode ? 'bg-slate-900/30' : 'bg-white/30'} backdrop-blur-xl border-b ${darkMode ? 'border-purple-500/10' : 'border-purple-200'}`}>
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="flex gap-2">
-              {[
-                { id: 'home', label: 'Home', icon: Home, gradient: 'from-purple-600 to-pink-600' },
-                { id: 'blogs', label: `Blogs (${blogs.length})`, icon: BookOpen, gradient: 'from-blue-600 to-cyan-600' },
-                { id: 'movies', label: `Movies (${movies.length})`, icon: Film, gradient: 'from-pink-600 to-rose-600' },
-                { id: 'tv', label: `TV Shows (${tvShows.length})`, icon: Tv, gradient: 'from-green-600 to-emerald-600' },
-              ].map(tab => (
-                <button key={tab.id} onClick={() => changeTab(tab.id)}
-                  className={`px-6 py-4 font-medium text-sm transition-all relative group ${
-                    activeTab === tab.id 
-                      ? darkMode ? 'text-white' : 'text-slate-900'
-                      : 'text-slate-400 hover:text-white'
-                  }`}>
-                  <div className="flex items-center gap-2 relative z-10">
-                    <tab.icon className="w-4 h-4" />
-                    {tab.label}
-                  </div>
-                  {activeTab === tab.id && (
-                    <div className={`absolute inset-0 bg-gradient-to-r ${tab.gradient} opacity-20 rounded-xl`}></div>
-                  )}
-                  <div className={`absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r ${tab.gradient} transition-all ${
-                    activeTab === tab.id ? 'opacity-100' : 'opacity-0 group-hover:opacity-50'
-                  }`}></div>
-                </button>
-              ))}
-            </div>
+<nav className={`relative ${darkMode ? 'bg-slate-900/30' : 'bg-white/30'} backdrop-blur-xl border-b ${darkMode ? 'border-purple-500/10' : 'border-purple-200'} overflow-x-auto`}>
+  <div className="max-w-7xl mx-auto px-2 sm:px-4">
+    <div className="flex gap-1 sm:gap-2">
+      {[
+        { id: 'home', label: 'Home', shortLabel: 'Home', icon: Home, gradient: 'from-purple-600 to-pink-600' },
+        { id: 'blogs', label: `Blogs (${blogs.length})`, shortLabel: 'Blogs', icon: BookOpen, gradient: 'from-blue-600 to-cyan-600' },
+        { id: 'movies', label: `Movies (${movies.length})`, shortLabel: 'Movies', icon: Film, gradient: 'from-pink-600 to-rose-600' },
+        { id: 'tv', label: `TV Shows (${tvShows.length})`, shortLabel: 'TV', icon: Tv, gradient: 'from-green-600 to-emerald-600' },
+      ].map(tab => (
+        <button key={tab.id} onClick={() => changeTab(tab.id)}
+          className={`px-3 sm:px-6 py-3 sm:py-4 font-medium text-xs sm:text-sm transition-all relative group whitespace-nowrap ${
+            activeTab === tab.id 
+              ? darkMode ? 'text-white' : 'text-slate-900'
+              : 'text-slate-400 hover:text-white'
+          }`}>
+          <div className="flex items-center gap-1 sm:gap-2 relative z-10">
+            <tab.icon className="w-3 h-3 sm:w-4 sm:h-4" />
+            <span className="hidden md:inline">{tab.label}</span>
+            <span className="md:hidden">{tab.shortLabel}</span>
           </div>
-        </nav>
+          {activeTab === tab.id && (
+            <div className={`absolute inset-0 bg-gradient-to-r ${tab.gradient} opacity-20 rounded-xl`}></div>
+          )}
+          <div className={`absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r ${tab.gradient} transition-all ${
+            activeTab === tab.id ? 'opacity-100' : 'opacity-0 group-hover:opacity-50'
+          }`}></div>
+        </button>
+      ))}
+    </div>
+  </div>
+</nav>
 
-        <main className={`relative max-w-7xl mx-auto px-4 py-8 transition-opacity duration-200 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
+
+<main className={`relative max-w-7xl mx-auto px-3 sm:px-4 py-4 sm:py-8 transition-opacity duration-200 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
+
           
           {activeTab === 'home' && (
             <div className="space-y-8 animate-fadeIn">
-              <div className={`relative overflow-hidden rounded-3xl bg-gradient-to-br ${darkMode ? 'from-purple-900/50 to-pink-900/50' : 'from-purple-100/80 to-pink-100/80'} p-8 backdrop-blur-xl border ${darkMode ? 'border-purple-500/20' : 'border-purple-300'} shadow-2xl`}>
-                <div className="relative z-10">
-                  <h2 className="text-4xl font-bold mb-2 bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent flex items-center gap-3">
-                    <Sparkles className="w-8 h-8 text-purple-400 animate-pulse" />
-                    Welcome back, {currentUser.name}!
-                  </h2>
-                  <p className={`${darkMode ? 'text-slate-300' : 'text-slate-700'} text-lg`}>Your creative universe at a glance</p>
-                </div>
-                <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500 rounded-full filter blur-3xl opacity-20"></div>
-              </div>
+              <div className={`relative overflow-hidden rounded-2xl sm:rounded-3xl bg-gradient-to-br ${darkMode ? 'from-purple-900/50 to-pink-900/50' : 'from-purple-100/80 to-pink-100/80'} p-6 sm:p-8 backdrop-blur-xl border ${darkMode ? 'border-purple-500/20' : 'border-purple-300'} shadow-2xl`}>
+  <div className="relative z-10">
+    <h2 className="text-2xl sm:text-4xl font-bold mb-2 bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent flex items-center gap-2 sm:gap-3 flex-wrap">
+      <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-purple-400 animate-pulse" />
+      Welcome back, {currentUser.name}!
+    </h2>
+    <p className={`${darkMode ? 'text-slate-300' : 'text-slate-700'} text-base sm:text-lg`}>Your creative universe at a glance</p>
+  </div>
+  <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500 rounded-full filter blur-3xl opacity-20"></div>
+</div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                 {[
                   { count: blogs.length, label: 'Blog Posts', icon: BookOpen, gradient: 'from-blue-600 to-cyan-600' },
                   { count: movies.length, label: 'Movies', icon: Film, gradient: 'from-pink-600 to-rose-600' },
@@ -619,49 +636,50 @@ return (
 
           {activeTab === 'blogs' && (
             <div className="animate-fadeIn">
-              <div className="flex justify-between items-center mb-8">
-                <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-                  My Blogs
-                </h2>
-                <button onClick={() => openModal('blog')} 
-                  className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-xl hover:from-blue-700 hover:to-cyan-700 transition-all shadow-lg shadow-blue-500/50 transform hover:scale-105 font-semibold">
-                  <Plus className="w-5 h-5" />
-                  New Blog
-                </button>
-              </div>
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 sm:mb-8">
+  <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+    My Blogs
+  </h2>
+  <button onClick={() => openModal('blog')} 
+    className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-xl hover:from-blue-700 hover:to-cyan-700 transition-all shadow-lg shadow-blue-500/50 transform hover:scale-105 font-semibold text-sm sm:text-base">
+    <Plus className="w-4 h-4 sm:w-5 sm:h-5" />
+    New Blog
+  </button>
+</div>
 
-              <div className={`mb-6 p-4 rounded-xl ${darkMode ? 'bg-slate-800/50' : 'bg-white/80'} backdrop-blur-xl border ${darkMode ? 'border-purple-500/20' : 'border-purple-200'}`}>
-                <div className="flex flex-wrap gap-4">
-                  <div className="flex-1 min-w-[200px]">
-                    <label className={`block text-sm mb-2 ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>Sort By</label>
-                    <select 
-                      value={blogFilters.sortBy}
-                      onChange={(e) => setBlogFilters({...blogFilters, sortBy: e.target.value})}
-                      className={`w-full px-4 py-2 ${darkMode ? 'bg-slate-900/50 border-purple-500/30 text-white' : 'bg-white border-purple-200 text-slate-900'} border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500`}>
-                      <option value="newest">Newest First</option>
-                      <option value="oldest">Oldest First</option>
-                      <option value="title">Alphabetical</option>
-                    </select>
-                  </div>
-                  <div className="flex-1 min-w-[200px]">
-                    <label className={`block text-sm mb-2 ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>Search in Blogs</label>
-                    <input 
-                      type="text"
-                      placeholder="Search title or content..."
-                      value={blogFilters.search}
-                      onChange={(e) => setBlogFilters({...blogFilters, search: e.target.value})}
-                      className={`w-full px-4 py-2 ${darkMode ? 'bg-slate-900/50 border-purple-500/30 text-white' : 'bg-white border-purple-200 text-slate-900'} border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 placeholder-slate-500`}
-                    />
-                  </div>
-                  <div className="flex items-end">
-                    <button 
-                      onClick={() => setBlogFilters({ sortBy: 'newest', search: '', tag: '' })}
-                      className={`px-6 py-2 ${darkMode ? 'bg-slate-700/50 hover:bg-slate-600/50' : 'bg-slate-200 hover:bg-slate-300'} rounded-xl transition-all`}>
-                      Clear Filters
-                    </button>
-                  </div>
-                </div>
-              </div>
+
+<div className={`mb-4 sm:mb-6 p-3 sm:p-4 rounded-xl ${darkMode ? 'bg-slate-800/50' : 'bg-white/80'} backdrop-blur-xl border ${darkMode ? 'border-purple-500/20' : 'border-purple-200'}`}>
+  <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+    <div className="flex-1 min-w-full sm:min-w-[200px]">
+      <label className={`block text-xs sm:text-sm mb-2 ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>Sort By</label>
+      <select 
+        value={blogFilters.sortBy}
+        onChange={(e) => setBlogFilters({...blogFilters, sortBy: e.target.value})}
+        className={`w-full px-3 sm:px-4 py-2 text-sm ${darkMode ? 'bg-slate-900/50 border-purple-500/30 text-white' : 'bg-white border-purple-200 text-slate-900'} border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500`}>
+        <option value="newest">Newest First</option>
+        <option value="oldest">Oldest First</option>
+        <option value="title">Alphabetical</option>
+      </select>
+    </div>
+    <div className="flex-1 min-w-full sm:min-w-[200px]">
+      <label className={`block text-xs sm:text-sm mb-2 ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>Search in Blogs</label>
+      <input 
+        type="text"
+        placeholder="Search title or content..."
+        value={blogFilters.search}
+        onChange={(e) => setBlogFilters({...blogFilters, search: e.target.value})}
+        className={`w-full px-3 sm:px-4 py-2 text-sm ${darkMode ? 'bg-slate-900/50 border-purple-500/30 text-white' : 'bg-white border-purple-200 text-slate-900'} border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 placeholder-slate-500`}
+      />
+    </div>
+    <div className="flex items-end w-full sm:w-auto">
+      <button 
+        onClick={() => setBlogFilters({ sortBy: 'newest', search: '', tag: '' })}
+        className={`w-full sm:w-auto px-4 sm:px-6 py-2 text-sm ${darkMode ? 'bg-slate-700/50 hover:bg-slate-600/50' : 'bg-slate-200 hover:bg-slate-300'} rounded-xl transition-all`}>
+        Clear Filters
+      </button>
+    </div>
+  </div>
+</div>
 
               <div className="space-y-6">
                 {filteredBlogs.map((blog, idx) => (
@@ -742,64 +760,66 @@ return (
 
 {activeTab === 'movies' && (
   <div className="animate-fadeIn">
-    <div className="flex justify-between items-center mb-8">
-      <h2 className="text-3xl font-bold bg-gradient-to-r from-pink-400 to-rose-400 bg-clip-text text-transparent">
-        My Movies
-      </h2>
-      <button onClick={() => openModal('movie')} 
-        className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-pink-600 to-rose-600 text-white rounded-xl hover:from-pink-700 hover:to-rose-700 transition-all shadow-lg shadow-pink-500/50 transform hover:scale-105 font-semibold">
-        <Plus className="w-5 h-5" />
-        Add Movie
-      </button>
+<div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 sm:mb-8">
+  <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-pink-400 to-rose-400 bg-clip-text text-transparent">
+    My Movies
+  </h2>
+  <button onClick={() => openModal('movie')} 
+    className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-gradient-to-r from-pink-600 to-rose-600 text-white rounded-xl hover:from-pink-700 hover:to-rose-700 transition-all shadow-lg shadow-pink-500/50 transform hover:scale-105 font-semibold text-sm sm:text-base">
+    <Plus className="w-4 h-4 sm:w-5 sm:h-5" />
+    Add Movie
+  </button>
+</div>
+
+<div className={`mb-4 sm:mb-6 p-3 sm:p-4 rounded-xl ${darkMode ? 'bg-slate-800/50' : 'bg-white/80'} backdrop-blur-xl border ${darkMode ? 'border-purple-500/20' : 'border-purple-200'}`}>
+  <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+    <div className="flex-1 min-w-full sm:min-w-[150px]">
+      <label className={`block text-xs sm:text-sm mb-2 ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>Sort By</label>
+      <select 
+        value={movieFilters.sortBy}
+        onChange={(e) => setMovieFilters({...movieFilters, sortBy: e.target.value})}
+        className={`w-full px-3 sm:px-4 py-2 text-sm ${darkMode ? 'bg-slate-900/50 border-purple-500/30 text-white' : 'bg-white border-purple-200 text-slate-900'} border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500`}>
+        <option value="newest">Newest First</option>
+        <option value="oldest">Oldest First</option>
+        <option value="rating">Highest Rating</option>
+        <option value="year">Year</option>
+        <option value="title">Alphabetical</option>
+      </select>
     </div>
 
-    <div className={`mb-6 p-4 rounded-xl ${darkMode ? 'bg-slate-800/50' : 'bg-white/80'} backdrop-blur-xl border ${darkMode ? 'border-purple-500/20' : 'border-purple-200'}`}>
-      <div className="flex flex-wrap gap-4">
-        <div className="flex-1 min-w-[150px]">
-          <label className={`block text-sm mb-2 ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>Sort By</label>
-          <select 
-            value={movieFilters.sortBy}
-            onChange={(e) => setMovieFilters({...movieFilters, sortBy: e.target.value})}
-            className={`w-full px-4 py-2 ${darkMode ? 'bg-slate-900/50 border-purple-500/30 text-white' : 'bg-white border-purple-200 text-slate-900'} border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500`}>
-            <option value="newest">Newest First</option>
-            <option value="oldest">Oldest First</option>
-            <option value="rating">Highest Rating</option>
-            <option value="year">Year</option>
-            <option value="title">Alphabetical</option>
-          </select>
-        </div>
-        <div className="flex-1 min-w-[150px]">
-          <label className={`block text-sm mb-2 ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>Min Rating</label>
-          <select 
-            value={movieFilters.minRating}
-            onChange={(e) => setMovieFilters({...movieFilters, minRating: parseInt(e.target.value)})}
-            className={`w-full px-4 py-2 ${darkMode ? 'bg-slate-900/50 border-purple-500/30 text-white' : 'bg-white border-purple-200 text-slate-900'} border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500`}>
-            <option value="1">1+ Stars</option>
-            <option value="2">2+ Stars</option>
-            <option value="3">3+ Stars</option>
-            <option value="4">4+ Stars</option>
-            <option value="5">5 Stars</option>
-          </select>
-        </div>
-        <div className="flex-1 min-w-[150px]">
-          <label className={`block text-sm mb-2 ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>Year</label>
-          <input 
-            type="number"
-            placeholder="2024"
-            value={movieFilters.year}
-            onChange={(e) => setMovieFilters({...movieFilters, year: e.target.value})}
-            className={`w-full px-4 py-2 ${darkMode ? 'bg-slate-900/50 border-purple-500/30 text-white' : 'bg-white border-purple-200 text-slate-900'} border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 placeholder-slate-500`}
-          />
-        </div>
-        <div className="flex items-end">
-          <button 
-            onClick={() => setMovieFilters({ sortBy: 'newest', minRating: 1, year: '' })}
-            className={`px-6 py-2 ${darkMode ? 'bg-slate-700/50 hover:bg-slate-600/50' : 'bg-slate-200 hover:bg-slate-300'} rounded-xl transition-all`}>
-            Clear
-          </button>
-        </div>
-      </div>
+    <div className="flex-1 min-w-full sm:min-w-[150px]">
+      <label className={`block text-xs sm:text-sm mb-2 ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>Min Rating</label>
+      <select 
+        value={movieFilters.minRating}
+        onChange={(e) => setMovieFilters({...movieFilters, minRating: parseInt(e.target.value)})}
+        className={`w-full px-3 sm:px-4 py-2 text-sm ${darkMode ? 'bg-slate-900/50 border-purple-500/30 text-white' : 'bg-white border-purple-200 text-slate-900'} border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500`}>
+        <option value="1">1+ Stars</option>
+        <option value="2">2+ Stars</option>
+        <option value="3">3+ Stars</option>
+        <option value="4">4+ Stars</option>
+        <option value="5">5 Stars</option>
+      </select>
     </div>
+    <div className="flex-1 min-w-full sm:min-w-[150px]">
+      <label className={`block text-xs sm:text-sm mb-2 ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>Year</label>
+      <input 
+        type="number"
+        placeholder="2024"
+        value={movieFilters.year}
+        onChange={(e) => setMovieFilters({...movieFilters, year: e.target.value})}
+        className={`w-full px-3 sm:px-4 py-2 text-sm ${darkMode ? 'bg-slate-900/50 border-purple-500/30 text-white' : 'bg-white border-purple-200 text-slate-900'} border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 placeholder-slate-500`}
+      />
+    </div>
+
+    <div className="flex items-end w-full sm:w-auto">
+      <button 
+        onClick={() => setMovieFilters({ sortBy: 'newest', minRating: 1, year: '' })}
+        className={`w-full sm:w-auto px-4 sm:px-6 py-2 text-sm ${darkMode ? 'bg-slate-700/50 hover:bg-slate-600/50' : 'bg-slate-200 hover:bg-slate-300'} rounded-xl transition-all`}>
+        Clear
+      </button>
+    </div>
+  </div>
+</div>
 
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {filteredMovies.map((movie, idx) => (
@@ -884,64 +904,64 @@ return (
 )}
 {activeTab === 'tv' && (
   <div className="animate-fadeIn">
-    <div className="flex justify-between items-center mb-8">
-      <h2 className="text-3xl font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
+    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 sm:mb-8">
+    <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
         My TV Shows
       </h2>
       <button onClick={() => openModal('tv')} 
-        className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-xl hover:from-green-700 hover:to-emerald-700 transition-all shadow-lg shadow-green-500/50 transform hover:scale-105 font-semibold">
-        <Plus className="w-5 h-5" />
+        className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-xl hover:from-green-700 hover:to-emerald-700 transition-all shadow-lg shadow-green-500/50 transform hover:scale-105 font-semibold text-sm sm:text-base">
+        <Plus className="w-4 h-4 sm:w-5 sm:h-5" />
         Add TV Show
       </button>
     </div>
 
-    <div className={`mb-6 p-4 rounded-xl ${darkMode ? 'bg-slate-800/50' : 'bg-white/80'} backdrop-blur-xl border ${darkMode ? 'border-purple-500/20' : 'border-purple-200'}`}>
-      <div className="flex flex-wrap gap-4">
-        <div className="flex-1 min-w-[150px]">
-          <label className={`block text-sm mb-2 ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>Sort By</label>
-          <select 
-            value={tvFilters.sortBy}
-            onChange={(e) => setTvFilters({...tvFilters, sortBy: e.target.value})}
-            className={`w-full px-4 py-2 ${darkMode ? 'bg-slate-900/50 border-purple-500/30 text-white' : 'bg-white border-purple-200 text-slate-900'} border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500`}>
-            <option value="newest">Newest First</option>
-            <option value="oldest">Oldest First</option>
-            <option value="rating">Highest Rating</option>
-            <option value="year">Year</option>
-            <option value="title">Alphabetical</option>
-          </select>
-        </div>
-        <div className="flex-1 min-w-[150px]">
-          <label className={`block text-sm mb-2 ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>Min Rating</label>
-          <select 
-            value={tvFilters.minRating}
-            onChange={(e) => setTvFilters({...tvFilters, minRating: parseInt(e.target.value)})}
-            className={`w-full px-4 py-2 ${darkMode ? 'bg-slate-900/50 border-purple-500/30 text-white' : 'bg-white border-purple-200 text-slate-900'} border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500`}>
-            <option value="1">1+ Stars</option>
-            <option value="2">2+ Stars</option>
-            <option value="3">3+ Stars</option>
-            <option value="4">4+ Stars</option>
-            <option value="5">5 Stars</option>
-          </select>
-        </div>
-        <div className="flex-1 min-w-[150px]">
-          <label className={`block text-sm mb-2 ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>Year</label>
-          <input 
-            type="number"
-            placeholder="2024"
-            value={tvFilters.year}
-            onChange={(e) => setTvFilters({...tvFilters, year: e.target.value})}
-            className={`w-full px-4 py-2 ${darkMode ? 'bg-slate-900/50 border-purple-500/30 text-white' : 'bg-white border-purple-200 text-slate-900'} border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 placeholder-slate-500`}
-          />
-        </div>
-        <div className="flex items-end">
-          <button 
-            onClick={() => setTvFilters({ sortBy: 'newest', minRating: 1, year: '' })}
-            className={`px-6 py-2 ${darkMode ? 'bg-slate-700/50 hover:bg-slate-600/50' : 'bg-slate-200 hover:bg-slate-300'} rounded-xl transition-all`}>
-            Clear
-          </button>
-        </div>
-      </div>
+    <div className={`mb-4 sm:mb-6 p-3 sm:p-4 rounded-xl ${darkMode ? 'bg-slate-800/50' : 'bg-white/80'} backdrop-blur-xl border ${darkMode ? 'border-purple-500/20' : 'border-purple-200'}`}>
+  <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+    <div className="flex-1 min-w-full sm:min-w-[150px]">
+      <label className={`block text-xs sm:text-sm mb-2 ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>Sort By</label>
+      <select 
+        value={tvFilters.sortBy}
+        onChange={(e) => setTvFilters({...tvFilters, sortBy: e.target.value})}
+        className={`w-full px-3 sm:px-4 py-2 text-sm ${darkMode ? 'bg-slate-900/50 border-purple-500/30 text-white' : 'bg-white border-purple-200 text-slate-900'} border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500`}>
+        <option value="newest">Newest First</option>
+        <option value="oldest">Oldest First</option>
+        <option value="rating">Highest Rating</option>
+        <option value="year">Year</option>
+        <option value="title">Alphabetical</option>
+      </select>
     </div>
+    <div className="flex-1 min-w-full sm:min-w-[150px]">
+      <label className={`block text-xs sm:text-sm mb-2 ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>Min Rating</label>
+      <select 
+        value={tvFilters.minRating}
+        onChange={(e) => setTvFilters({...tvFilters, minRating: parseInt(e.target.value)})}
+        className={`w-full px-3 sm:px-4 py-2 text-sm ${darkMode ? 'bg-slate-900/50 border-purple-500/30 text-white' : 'bg-white border-purple-200 text-slate-900'} border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500`}>
+        <option value="1">1+ Stars</option>
+        <option value="2">2+ Stars</option>
+        <option value="3">3+ Stars</option>
+        <option value="4">4+ Stars</option>
+        <option value="5">5 Stars</option>
+      </select>
+    </div>
+    <div className="flex-1 min-w-full sm:min-w-[150px]">
+      <label className={`block text-xs sm:text-sm mb-2 ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>Year</label>
+      <input 
+        type="number"
+        placeholder="2024"
+        value={tvFilters.year}
+        onChange={(e) => setTvFilters({...tvFilters, year: e.target.value})}
+        className={`w-full px-3 sm:px-4 py-2 text-sm ${darkMode ? 'bg-slate-900/50 border-purple-500/30 text-white' : 'bg-white border-purple-200 text-slate-900'} border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 placeholder-slate-500`}
+      />
+    </div>
+    <div className="flex items-end w-full sm:w-auto">
+      <button 
+        onClick={() => setTvFilters({ sortBy: 'newest', minRating: 1, year: '' })}
+        className={`w-full sm:w-auto px-4 sm:px-6 py-2 text-sm ${darkMode ? 'bg-slate-700/50 hover:bg-slate-600/50' : 'bg-slate-200 hover:bg-slate-300'} rounded-xl transition-all`}>
+        Clear
+      </button>
+    </div>
+  </div>
+</div>
 
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {filteredTvShows.map((show, idx) => (
@@ -1029,32 +1049,32 @@ return (
         </>
       )}
 
-      {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-80 backdrop-blur-md flex items-center justify-center z-50 p-4 animate-fadeIn">
-          <div className={`${darkMode ? 'bg-gradient-to-br from-slate-800 to-slate-900' : 'bg-gradient-to-br from-white to-slate-50'} rounded-2xl shadow-2xl max-w-2xl w-full p-8 border ${darkMode ? 'border-purple-500/30' : 'border-purple-200'} backdrop-blur-xl transform transition-all duration-300 scale-100 hover:scale-[1.02]`}>
-            <div className="flex justify-between items-center mb-6">
-              <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent flex items-center gap-2">
-                <Sparkles className="w-6 h-6 text-purple-400" />
-                {editingItem ? 'Edit' : 'Create'} {modalType === 'blog' ? 'Blog Post' : modalType === 'movie' ? 'Movie' : 'TV Show'}
+{showModal && (
+  <div className="fixed inset-0 bg-black bg-opacity-80 backdrop-blur-md flex items-center justify-center z-50 p-3 sm:p-4 animate-fadeIn overflow-y-auto">
+    <div className={`${darkMode ? 'bg-gradient-to-br from-slate-800 to-slate-900' : 'bg-gradient-to-br from-white to-slate-50'} rounded-xl sm:rounded-2xl shadow-2xl max-w-2xl w-full p-4 sm:p-8 border ${darkMode ? 'border-purple-500/30' : 'border-purple-200'} backdrop-blur-xl transform transition-all duration-300 my-4 sm:my-8`}>
+      <div className="flex justify-between items-center mb-4 sm:mb-6">
+        <h3 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent flex items-center gap-2">
+        <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-purple-400" />
+        {editingItem ? 'Edit' : 'Create'} {modalType === 'blog' ? 'Blog Post' : modalType === 'movie' ? 'Movie' : 'TV Show'}
               </h3>
               <button onClick={closeModal} className={`p-2 ${darkMode ? 'hover:bg-slate-700/50' : 'hover:bg-slate-200'} rounded-xl transition-all group`}>
-                <X className={`w-6 h-6 ${darkMode ? 'text-slate-400 group-hover:text-white' : 'text-slate-600 group-hover:text-slate-900'} group-hover:rotate-90 transition-all`} />
-              </button>
+          <X className={`w-5 h-5 sm:w-6 sm:h-6 ${darkMode ? 'text-slate-400 group-hover:text-white' : 'text-slate-600 group-hover:text-slate-900'} group-hover:rotate-90 transition-all`} />
+        </button>
             </div>
             
             {error && (
-              <div className="mb-4 p-4 bg-red-500/10 border border-red-500/50 rounded-xl text-red-400 text-sm backdrop-blur-sm">
-                {error}
-              </div>
-            )}
+        <div className="mb-3 sm:mb-4 p-3 sm:p-4 bg-red-500/10 border border-red-500/50 rounded-xl text-red-400 text-xs sm:text-sm backdrop-blur-sm">
+          {error}
+        </div>
+      )}
             
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div>
-                <label className={`block text-sm font-medium ${darkMode ? 'text-slate-300' : 'text-slate-700'} mb-2`}>Title</label>
-                <input type="text" placeholder="Enter title..." required value={formData.title}
-                  onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                  className={`w-full px-4 py-3 ${darkMode ? 'bg-slate-900/50 border-purple-500/30 text-white' : 'bg-white border-purple-200 text-slate-900'} border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent placeholder-slate-500 transition-all`}
-                />
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
+        <div>
+          <label className={`block text-xs sm:text-sm font-medium ${darkMode ? 'text-slate-300' : 'text-slate-700'} mb-2`}>Title</label>
+          <input type="text" placeholder="Enter title..." required value={formData.title}
+            onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+            className={`w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base ${darkMode ? 'bg-slate-900/50 border-purple-500/30 text-white' : 'bg-white border-purple-200 text-slate-900'} border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent placeholder-slate-500 transition-all`}
+          />
               </div>
               {modalType === 'blog' && (
                 <>
@@ -1119,22 +1139,22 @@ return (
                   Make this public
                 </label>
               </div>
-              <div className="flex gap-3 pt-2">
-                <button type="submit" disabled={isSubmitting}
-                  className="flex-1 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl hover:from-purple-700 hover:to-pink-700 transition-all font-semibold shadow-lg shadow-purple-500/50 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
-                  {isSubmitting ? (
-                    <span className="flex items-center justify-center gap-2">
-                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                      {editingItem ? 'Updating...' : 'Creating...'}
-                    </span>
-                  ) : (
-                    editingItem ? 'Update' : 'Create'
-                  )}
-                </button>
-                <button type="button" onClick={closeModal} 
-                  className={`px-6 py-3 ${darkMode ? 'bg-slate-700/50 hover:bg-slate-600/50' : 'bg-slate-200 hover:bg-slate-300'} rounded-xl transition-all font-semibold`}>
-                  Cancel
-                </button>
+              <div className="flex flex-col sm:flex-row gap-3 pt-2">
+          <button type="submit" disabled={isSubmitting}
+            className="w-full sm:flex-1 px-4 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl hover:from-purple-700 hover:to-pink-700 transition-all font-semibold shadow-lg shadow-purple-500/50 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none">
+            {isSubmitting ? (
+              <span className="flex items-center justify-center gap-2">
+                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                {editingItem ? 'Updating...' : 'Creating...'}
+              </span>
+            ) : (
+              editingItem ? 'Update' : 'Create'
+            )}
+          </button>
+          <button type="button" onClick={closeModal} 
+            className={`w-full sm:w-auto px-4 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base ${darkMode ? 'bg-slate-700/50 hover:bg-slate-600/50' : 'bg-slate-200 hover:bg-slate-300'} rounded-xl transition-all font-semibold`}>
+            Cancel
+          </button>
               </div>
             </form>
           </div>
